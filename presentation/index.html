@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The Business of Machine Machine Learning.  A Pragmatic Approach</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+		  p {
+				text-align:left;
+			}
+		  .title-expression {
+				fill: #94d31b;
+			}
+
+		  .revealhidden {
+			  float:right;
+			  width:40%;
+			  margin-top:10%;
+		  }
+
+		  .revealhidden p
+		  {
+			  font-size: .7em;
+		  }
+		</style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div><img src="media/nlp-logo.png"/></div>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>The Business of Machine Learning</h1>
+					<h3>A Pragmatic Approach</h3>
+					
+					<aside class="notes">
+							 Machine learning seems un-approachable for many.  The Use-cases do not seem to fit the logic we are implementing.
+							 The question on many developers minds is how can I apply machine learning today, how do I get started, and how can I deploy a machine learning model to production.
+							 The goal of this talk is to show how machine learning can be applied in a typical business use case, and answer all of the questions outlined.
+	 				</aside>
+				</section>
+
+				<!--Who are we as developers -->				
+				<section>
+					<div>
+						<img src="media/me.jpg">
+					</div>
+
+					<p>
+						Hi, I'm Michael Mann and I work at NLP Logix. We build predictive models and data visualizations to support our customers desire to make more money.
+					</p>
+				</section>
+
+				<section>
+					<h2>Goals of this Conversation</h2>
+					
+					<p>To demonstrate that predictive modeling can be a tool for solving typical business problems</p>
+					<p>Provide a path for getting started with machine learning</p>
+					<p>Remove any an all barriers to using predictive modeling as a tool</p>
+					<p>Have at least 3 people in the room take this material and build a predictive model to solve a business problem within the next 3 months</p>
+					
+					<aside class="notes">
+						Machine learning seems un-approachable for many.  The Use-cases do not seem to fit the logic we are implementing.
+						The question on many developers minds is how can I apply machine learning today, how do I get started, and how can I deploy a machine learning model to production.
+						The goal of this talk is to show how machine learning can be applied in a typical business use case, and answer all of the questions outlined.
+					</aside>
+				</section>
+
+				<section>
+					<h2>What will we cover in this Conversation</h2>
+					
+					<p>Use a data set to explore machine learning as a tool</p>
+					<p>Compare and contrast 3 modeling approaches</p>
+					<p>Train some models and look at code</p>
+					<p>Call predict on a model and look at code</p>
+					<p>Explore options for deploying models to production</p>
+					
+					<aside class="notes">
+						Machine learning seems un-approachable for many.  The Use-cases do not seem to fit the logic we are implementing.
+						The question on many developers minds is how can I apply machine learning today, how do I get started, and how can I deploy a machine learning model to production.
+						The goal of this talk is to show how machine learning can be applied in a typical business use case, and answer all of the questions outlined.
+					</aside>
+				</section>
+								
+				<section>
+					<h2>This is a machine learning talk</h2>
+					<h3>your laptop must be amazing</h3>
+					<div>
+						<p class="fragment"><img src="media/laptopspecs.png"></p>
+					</div>
+					<aside class="notes">
+						The laptop was provided to the participants in out 4th cohort of the data analytics bootcamp
+					</aside>
+				</section>
+
+				<section>
+					<h1>Other Tools Used</h1>
+					<span>
+						<p>Python 3.7</p>
+						<p>SQL Server Express</p>
+						<p>VS Code</p>
+						<p>Postman</p>
+						<p>A <a href="https://www.kaggle.com/maxhorowitz/nflplaybyplay2009to2016">NFL dataset</a> with plays from 2009-2016</p>
+					</span>
+					<aside class="notes">
+						The laptop was provided to the participants in out 4th cohort of the data analytics bootcamp
+					</aside>
+				</section>
+
+				<!-- In the Beginning -->
+				<section>
+					<h1>In the Beginning</h1>
+					<h3>There was a conversation and it was good </h3>
+					<div>
+						<img src="media/beginning_conversation.jpg">
+					</div>
+					<aside class="notes">
+						Discuss the genisis of the idea and how it came from the NLP Logix Summer Analytics bootcamp.
+						Highlight the conversation that Ben and I had concerning CW Metrics.  Re-state the question as a modeling question.  Give an example
+					</aside>
+				</section>
+				
+				<section data-background-image="media/idea_bulb.jpg">
+					<div style="background-color:black">
+						<span style="color:white">Can we take an aggregate metric computed in SQL and replace it with a predictive model?</span>
+					</div>
+				</section>
+
+				<section>
+					<div style="margin:auto;">
+						<img src="media/youbetcha.jpg"/>
+					</div>
+				</section>
+
+				<section data-background-image="media/packer-seahawksplay.gif">
+					<h2>NFL Dataset Plays from 1999-2016</h2>
+
+					<section>
+						<span style="color:white">
+							<p>407,688 plays</p>
+							<p>2,304 games</p>
+							<p>175 Average number of plays in a game</p>
+							<p>176 Median number of plays in a game</p>
+							<p>125 Minimum number of plays in a game</p>
+							<p>272 Maximum number of plays in a game</p>
+							<p>13 Standard Deviation of the number of plays in a game</p>
+						</span>
+					</section>
+				</section>
+
+				<section>
+					<h2>What are we going to do</h2>
+					<p>We are going to use Random Forest to answer some questions in our dataset because it is robust, handles outliers well and has interpretability built in</p>
+				</section>
+
+				<section>
+					<div>
+						<h2>Model number 1<h2>
+					</div>
+
+					<p>
+					    Let's predict if a play will be a run or a pass giving us a confidence metric
+					</p>
+				</section>
+
+				<section>
+					<div>
+						<h2>How would you approach this problem without prodictive modeling as a tool?<h2>
+					</div>
+				</section>
+
+				<section>
+					<h2>Anatomy of a Machine Learning Training Pipeline</h2>
+					<span>							
+						<p class="fragment">Feature engineering</p>
+						<p class="fragment">Replace categorical features with numerical representations</p>
+						<p class="fragment">Split data into train and cross validation</p>
+						<p class="fragment">Call predict</p>
+						<p class="fragment">Save outputs to the file system</p>
+					</span>
+				</section>					
+				
+				<section>
+					<h2>What does the training process produce</h2>
+					<span>
+						<p class="fragment">Binary serialized version of the model</p>
+						<p class="fragment">Feature map</p>
+						<p class="fragment">Factor map</p>
+						<p class="fragment">List of the feature importance ranking of the trained model</p>
+						<p class="fragment">A file that contains the predictions of the cross validation set</p>
+					</span>
+				</section>
+
+				<section>
+					<div>
+						<h2>Model number 2<h2>							
+					</div>
+
+					<p>
+						Let's build a predictive model to predict a cumulative run/pass ratio in a game for the team with posession
+					</p>
+				</section>
+								
+				<section>
+					<section>
+						<div>
+							<h1>Let's look at a SQL solution<h1>
+						</div>
+					</section>
+
+					<section>
+						<h2>Step 1 Load a Table with 1/0 Values</h2>
+						<pre>
+							<code data-trim data-noescape>
+							IF OBJECT_ID('dbo.lookback', 'U') IS NOT NULL 
+								DROP TABLE dbo.lookback; 
+								
+							select x1.GameID 'prevgameid', 
+									x0.GameID 'curgameid',
+									x1.PlayID 'prevplayid',
+									x0.PlayID 'curplayid',
+									x1.posteam 'prevposteam', 
+									x0.posteam 'curposteam',
+									x1.PlayType 'PrevPlay', 
+									x0.PlayType 'CurrentPlay',
+									x0.drive,
+									x0.qtr,
+									x0.down,
+									cast(replace(cast(cast(x0.[time] as time) as varchar(5)), ':', '.') as float) 'TimeLeft',
+									isnull(x1.IsRun, 0) 'PrevIsRun', 
+									isnull(x1.IsPass, 0) 'PrevIsPass'
+							into lookback 
+							from (
+							select
+								posteam,
+								gameid, 
+								drive,    
+								down,
+								qtr,
+								timesecs,
+								playtype,
+								[time],
+								row_number() over (partition by posteam, gameid order by timesecs desc) as PlayID,
+								CASE when playtype = 'Run' then 1 else 0 end 'IsRun',
+								CASE when playtype = 'Pass' then 1 else 0 end 'IsPass'
+							from NFLPlays2009_2017
+							where posteam is not null
+							) x0
+							left join (
+							select
+								posteam,
+								gameid, 
+								drive, 
+								down,
+								qtr,
+								timesecs,
+								playtype,
+								[time],
+								row_number() over (partition by posteam, gameid order by timesecs desc) as PlayID,
+								CASE when playtype = 'Run' then 1 else 0 end 'IsRun',
+								CASE when playtype = 'Pass' then 1 else 0 end 'IsPass'
+							from NFLPlays2009_2017
+							) x1 on x0.posteam = x1.posteam and x0.GameID = x1.GameID and x0.PlayID = x1.PlayID+1
+							</code>
+						</pre>	
+					</section>
+				
+					<section>
+						<h2>Step 2 Compute the Run/Pass Ratio Over an Aggregate Sum</h2>
+						<pre>
+							<code data-trim data-noescape>
+							select x3.*, x3.TotalRun/NULLIF(((x3.TotalRun + x3.TotalPass) * 1.0), 0) 'RunPassRatio'
+							from
+							(
+							select x1.curgameid 'GameId', x1.curplayid 'PlayID', x1.curposteam 'posteam', x1.drive, x1.down, x1.qtr, x1.currentplay 'Play', x1.TimeLeft, sum(x2.PrevIsPass) 'TotalPass', sum(x2.PrevIsRun) 'TotalRun' 
+							from lookback x1
+							inner join lookback x2
+								on x2.curgameid = x1.curgameid
+								and x2.curposteam = x1.curposteam
+								and x2.prevplayid < x1.curplayid    
+							group by  x1.curgameid,  x1.curposteam,  x1.drive, x1.down, x1.qtr, x1.curplayid, x1.TimeLeft, x1.currentplay
+							) as x3
+							order by x3.GameId, x3.posteam, x3.PlayID, x3.Play
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>What are some drawbacks to this approach</h2>
+						<span>
+							<p class="fragment">Can only be used on the current or prior plays</p>
+							<p class="fragment">Requires a DBA/Developer to write/tune the Query</p>
+							<p class="fragment">Applies load to the Database Server to compute the result as a running total</p>
+						</span>
+					</section>										
+				</section>
+				<section>
+					<div>
+						<h2>Model number 3<h2>
+					</div>
+
+					<p>
+						Let's build a predictive model to predict a 1/0 value where 1 represents a run and 0 represents a pass
+					</p>
+				</section>
+				<section>
+					<section>
+					<h2>Anatomy of a Machine Learning Prediction Pipeline</h2>
+					<span>							
+						<p>Verify inputs</p>
+						<p>Transform categorical variables into their numerical representations</p>
+						<p>Replace null values</p>
+						<p>Construct a 2d matrix for model prediction</p>
+						<p>Call predict</p>
+					</span>
+					</section>
+					<section>
+						<h2>Let's look at some code</h2>
+					</section>
+				</section>
+
+				<section>
+					<h2>What about deployment</h2>
+					<span>
+						<p>Expose the model as an api end-point behind a web server</p>
+						<p>Using the Function as a Service offerings of any cloud provider</p>
+						<p>Deploy to a managed server like AWS Elastic Beanstalk</p>
+					</span>
+				</section>
+				<section>
+					<h2>Let's demo the model exposed as an API</h2>
+				</section>
+
+				<section>
+					<h2>In Summary</h2>
+					<span>
+						<p>Walked through code to create three styles of models</p>
+						<p>Walked through code to call predict on models</p>
+						<p>Demonstrated how to deploy a model as an API</p>
+						<p>Go forth and solve simple problems with modeling as a tool</p>
+					</span>
+				</section>
+
+				<section>
+					<h1>Thank you</h2>
+					<div>
+						<span><a href="mailto:michael.mann@nlplogix.com">michael.mann@nlplogix.com</a></span>
+						<span><a href="https://github.com/passionateprogrammersguild">https://github.com/passionateprogrammersguild</a></span>
+						<span><a href="https://www.linkedin.com/in/mmann2943/">https://www.linkedin.com/in/mmann2943/</a></span>
+					</div>
+				</section>					
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/mathsvg/math.js', async: true },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'socket.io/socket.io.js', async: true },
+					{ src: 'plugin/notes-server/client.js', async: true }
+				]
+			});
+			
+			var handleRenderAssociatedImage = function(el, targetId) {
+				
+				//remove the img node from the DOM if it exists
+				var imgContainer = document.getElementById(targetId);
+				var images = imgContainer.getElementsByTagName("img");
+				for (var i=0; i < images.length; i++) {
+					images[i].remove();
+				}
+
+				//add the image to the DOM
+				//create a new img element
+				var img = document.createElement("img");
+				img.setAttribute("src", "img/"+ el.id + ".jpg");
+				imgContainer.appendChild(img);
+			}
+
+			var handleRenderAssociatedText = function(el, targetId, dict) {
+				//hide all elements
+				var container = document.getElementById(targetId);
+								
+				for (var i=0; i < container.children.length; i++) {
+					container.children[i].remove();
+				}
+
+				var p = document.createElement("p");
+				p.innerHTML = dict[el.id];
+				p.className = "s-text";
+
+				container.appendChild(p);
+			}
+
+			Reveal.addEventListener( 'fragmentshown', function( event ) {    			
+				var parentElementId = event.fragment.parentElement.id;
+
+				if (parentElementId === "programmer-types" 
+				||  parentElementId === "company") {
+					handleRenderAssociatedImage(event.fragment, parentElementId + "-img");
+				}
+
+				if (parentElementId === "error") {
+					handleRenderAssociatedText(event.fragment, parentElementId + "-text", {
+						"accuracy": "The average numer of correct predictions",
+						"mse": "The average of the squares of the error",
+						"mae" : "The average of the absolute value of the differences between predicted values and observed values",
+						"auc" : "Measures the True positive v.s. False positive rates in two class Classification"
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
