@@ -36,6 +36,18 @@ The model folder contains 3 artifacts
 * FACTORMAP - A datastructure that contains the mappings of the classification features of the model along with their numerical representation in the model
 *  FEATUREMAP - a data structure that contains each of the features of the model along with the 1 based index position each feature belongs in the matrix when we perform a prediction
 
+## Presenting Model as an API
+
+To expose the models as an api endpoint execute `bash bin/run_webserver.sh`.
+
+To exercise the models open Postman and import the codeonthebeach2018.postman_collection.json.
+
+There are three api endpoints
+* nfl-regression - The regression model (prediction a continuous value ie numerical)
+* nfl-binary classifier - A binary classification model (predicting 1/0)
+* nfl-multiclass classifier - A classification model (predicting a label ie string value)
+
+Feel free to change the values in the body of the request and see the predictions change
 
 
 
