@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "a75f904b-924d-4bfd-9da7-10eb47326748",
+		"name": "codeonthebeach2018",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "nfl-regression",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"qtr\": 3,\r\n    \"down\": 2,\r\n    \"ydstogo\": 15,\r\n    \"SideofField\" : \"PosTeam\",\r\n    \"YdsToTD\" : 42,\r\n    \"PctTimeLeftInQtr\":0.13,\r\n    \"PercentageOfField\": 0.8,\r\n    \"PosTeam\": \"HomeTeam\",\r\n    \"TimeLeftInQtr\":1.59,\r\n    \"RatioYrdsToGoTimeLeftInQtr\": 0.7\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8042/regression",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8042",
+					"path": [
+						"regression"
+					]
+				},
+				"description": "Exercising the api for the code on the beach presentation 2018"
+			},
+			"response": []
+		},
+		{
+			"name": "nfl-binary classifier",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"qtr\": 3,\r\n    \"down\": 2,\r\n    \"ydstogo\": 15,\r\n    \"SideofField\" : \"PosTeam\",\r\n    \"YdsToTD\" : 42,\r\n    \"PctTimeLeftInQtr\":0.13,\r\n    \"PercentageOfField\": 0.8,\r\n    \"PosTeam\": \"HomeTeam\",\r\n    \"TimeLeftInQtr\":1.59,\r\n    \"RatioYrdsToGoTimeLeftInQtr\": 0.7\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8042/binaryclassification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8042",
+					"path": [
+						"binaryclassification"
+					]
+				},
+				"description": "Exercising the api for the code on the beach presentation 2018"
+			},
+			"response": []
+		},
+		{
+			"name": "nfll-multiclass classifier",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"qtr\": 3,\r\n    \"down\": 2,\r\n    \"ydstogo\": 15,\r\n    \"SideofField\" : \"PosTeam\",\r\n    \"YdsToTD\" : 42,\r\n    \"PctTimeLeftInQtr\":0.13,\r\n    \"PercentageOfField\": 0.8,\r\n    \"PosTeam\": \"HomeTeam\",\r\n    \"TimeLeftInQtr\":1.59,\r\n    \"RatioYrdsToGoTimeLeftInQtr\": 0.7\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8042/multiclassclassification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8042",
+					"path": [
+						"multiclassclassification"
+					]
+				},
+				"description": "Exercising the api for the code on the beach presentation 2018"
+			},
+			"response": []
+		}
+	]
+}
